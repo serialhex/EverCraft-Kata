@@ -4,9 +4,18 @@
 module Main where
 
 -- creating Character datum
-data Character = Character  { name      :: String
-                            , alignment :: Alignment
+data Character = Character  { name        :: String
+                            , alignment   :: Alignment
+                            , armorClass  :: Int
+                            , hitPoints   :: Int
                             } deriving (Show)
+
+showCharacter :: Character -> String
+showCharacter c = unlines [ "Your name is: " ++ name c
+                          , "Your alignment is: " ++ show (alignment c)
+                          , "Your Armor Class is: " ++ show (armorClass c)
+                          , "You have " ++ (show (hitPoints c)) ++ " hit points"
+                          ]
 
 data Alignment  = Good
                 | Neutral
@@ -26,7 +35,9 @@ main = do putStrLn "Hello World"
           n <- getLine
           putStrLn "Choose: (G)ood, (N)eutral or (E)vil"
           al <- getChar
-          let c = Character { name = n
-                            , alignment = setAlignment al }
-          putStrLn ("Your name is: " ++ name c)
-          putStrLn ("Your alignment is: " ++ show (alignment c))
+          let c = Character { name        = n
+                            , alignment   = setAlignment al
+                            , armorClass  = 10
+                            , hitPoints   = 5 }
+          putStr (showCharacter c)
+
