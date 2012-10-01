@@ -17,6 +17,14 @@ showCharacter c = unlines [ "Your name is: " ++ name c
                           , "You have " ++ (show (hitPoints c)) ++ " hit points"
                           ]
 
+charStatus :: Character -> String
+charStatus c = (name c) ++ " has " ++ (show (hitPoints c)) ++ " hit points left."
+
+attack :: Character -> Character -> Character
+attack atkr defr = undefined
+
+d20roll rolr = undefined
+
 data Alignment  = Good
                 | Neutral
                 | Evil deriving (Show)
@@ -29,6 +37,7 @@ setAlignment 'N'        = Neutral
 setAlignment 'n'        = Neutral
 -- and because everyone knows if you dont follow the rules, you're evil!
 setAlignment _          = Evil
+
 
 main = do putStrLn "Hello World"
           putStrLn "Please enter your name:"
